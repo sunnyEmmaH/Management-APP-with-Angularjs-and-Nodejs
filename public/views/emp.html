@@ -1,0 +1,52 @@
+    <nav class="navbar navbar-default fixedElement" role="navigation" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">Management App</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/create/"><button class="w3-btn w3-green w3-ripple">&#9998; Create New User</button></a>
+                    </li>
+                    <li>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Search for ... </label>
+                        <input ng-model="searchText">
+                      </md-input-container>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="conatiner">
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+      <table class="w3-table w3-bordered w3-striped">
+        <tr>
+        <div class="row">
+          <th class="col-md-2 col-xs-2">Profile Picture</th>
+          <th class="col-md-3 col-xs-3" ng-click="sortBy('name')">Full&nbspName<span class="sortorder" ng-show="sortReference === 'name'" ng-class="{reverse:reverse}"></span></th>
+          <th class="col-md-2 col-xs-2" ng-click="sortBy('tittle')">Tittle<span class="sortorder" ng-show="sortReference === 'tittle'" ng-class="{reverse:reverse}"></span></th>
+          <th class="col-md-1 col-xs-1" ng-click="sortBy('dircRept')">Dir&nbspReports<span class="sortorder" ng-show="sortReference === 'dircRept'" ng-class="{reverse:reverse}"></span></th>
+          <th class="col-md-1 col-xs-1">Detials</th>
+        </div>
+        </tr>
+        <tr ng-repeat="emp in emps | orderBy: sortReference : reverse | filter : searchText ">
+        <div class="row" infinite-scroll='getNext()' infinite-scroll-disabled='busy || done' infinite-scroll-container="'#data_container'" infinite-scroll-distance='10'>
+          <td ng-click=""><img ng-src="{{'IMG/download/' + emp.profilePic}}"></td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.tittle }}</td>
+          <td><a href="#/dircReports/{{emp._id}}/"><button style="margin-left: 15%" class="btn btn-info"><i class="fa fa-info" aria-hidden="true"></i>&nbsp&nbsp&nbsp{{ emp.dirReports.length }}</button></a></td>
+          <td><a href="#/edit/{{emp._id}}"><button class="btn btn-info"> Detials</button></a></td>
+        </div>
+        </tr>
+      </table>
+      <div ng-show='busy'>Loading data...</div>
+    </div>
+  </div>
+</div>

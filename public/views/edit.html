@@ -1,0 +1,89 @@
+  <div class="container">
+    <div class="row">
+      <h5 class="col-md-4 col-xs-6">Edit An Employee</h5>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Profile Picture</label>
+        <div ng-model="emps.profilePic"><img ng-src="{{'IMG/download/' + emps.profilePic}}"></div>
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Full Name</label>
+        <input ng-model="emps.name">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Tittle</label>
+        <input ng-model="emps.tittle">
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Gender</label>
+        <md-select ng-model="emps.gender">
+          <md-option value="male">Male</md-option>
+          <md-option value="female">Female</md-option>
+          <md-option value="other">Other</md-option>
+        </md-select>
+      </md-input-container>
+	  
+	  <md-input-container class="md-block" flex-gt-sm>
+        <label>Age</label>
+        <input ng-model="emps.age">
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label ng-show="!hasManager">Manager</label>
+        <label ng-show="hasManager" >{{emps.manager.fName + " " + emps.manager.lName}}</label>
+        <md-select ng-model="emps.manager" md-on-open="getAvailableManager(emps._id)">
+          <md-option ng-repeat="amanager in availableManagers" value="{{amanager._id}}">
+            {{amanager.name + ' ' + amanager._id}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+	  <md-input-container class="md-block" flex-gt-sm>
+        <label>Phone</label>
+        <input ng-model="emps.phone">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Email</label>
+        <input ng-model="emps.email">
+      </md-input-container>
+    </div>
+	
+    <form name="myForm" id="myForm" enctype="multipart/form-data" ng-submit="upLoadImg(croppedDataUrl, emps._id)">
+        <div>Crop Image and Upload</div>
+        <button ngf-select ng-model="picFile" accept="image/*">
+            Select Picture</button>
+        <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+            <img-crop image="picFile  | ngfDataUrl"
+            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+            </img-crop>
+        </div>
+        <div>
+            <img ng-src="{{croppedDataUrl}}" />
+        </div>
+        <button id="addLogo" ng-submit="upLoadImg(croppedDataUrl, emps._id)">Add Logo</button>
+    </form>
+    <br>
+    <div class="row">  
+      <a href="#/mainpage/"><button class="col-md-4  col-xs-4 w3-btn w3-green w3-ripple" ng-click="editEmp()" >&#10004; Save Changes</button></a>
+      <a href="#/mainpage/"><button class="col-md-4  col-xs-4 w3-btn w3-red" ng-click="deleteEmp()">Delete</button></a>
+      <a href="#/"><button class="col-md-4 col-xs-4 w3-btn w3-yellow">Cancel</button></a>
+    </div>
+  </div>
+
+

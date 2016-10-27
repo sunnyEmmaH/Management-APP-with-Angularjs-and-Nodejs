@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  	<link href="../css/animations.css" rel="stylesheet" />
+	<link href="../css/layout.css" rel="stylesheet">
+	<link href="../css/dropzone.css" rel="stylesheet">
+
+	<script src= "../javascripts/dropzone.js"></script>
+	
+	    <title>Management App</title>
+
+	<style type="text/css">
+		.sortorder:after {
+		  content: '\25b2';
+		}
+		.sortorder.reverse:after {
+		  content: '\25bc';
+		}
+	</style>
+
+</head>
+
+<header>
+	<div class="brand">Management App</div>
+</header>
+
+<body ng-app="myApp" data-ng-cloak>
+
+<div class="w3-container">
+	<div ng-view></div>
+	<br>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+<script src= "../javascripts/ng-infinite-scroll.min.js"></script>
+
+<script src= "../app.js"></script>
+<script src= "../javascripts/myDirective.js"></script>
+<script src= "../javascripts/ng-file-upload.js"></script>
+<script src= "../javascripts/ng-file-upload-shim.js"></script>
+<script src= "../javascripts/ng-img-crop.js"></script>
+
+
+	<script type="text/javascript">
+		$(window).scroll(function(e){ 
+		  var $el = $('.fixedElement'); 
+		  var isPositionFixed = ($el.css('position') == 'fixed');
+		  if ($(this).scrollTop() > 200 && !isPositionFixed){ 
+		    $('.fixedElement').css({'position': 'fixed', 'top': '0px', 'z-index' : '100'}); 
+		  }
+		  if ($(this).scrollTop() < 200 && isPositionFixed)
+		  {
+		    $('.fixedElement').css({'position': 'static', 'top': '0px', 'z-index' : '100'}); 
+		  } 
+		});
+	</script>
+
+</body>
+</html>
